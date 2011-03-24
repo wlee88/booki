@@ -34,6 +34,8 @@
 	<% end %>
 </div>
 
+<% if !params[:site_search]%>
+
 <div class="search_result_box">
 	<p class="top_text">Bookmarks with Related Tags</p>
 	<% if @tags.empty? %>
@@ -52,3 +54,5 @@
 		</table>
 	<% end %>
 </div>
+
+<% end %>

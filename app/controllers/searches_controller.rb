@@ -1,12 +1,16 @@
 class SearchesController < ApplicationController
   def index
     #if a keyword parameter exists
+    
     if (params[:search])
       #using the Search Mixin applied within all models, search this keyword
       @bookmarks = Bookmark.search(params[:search])
       @sites = Site.search(params[:search])
       @tags = Tag.search(params[:search])
-
+    elsif(params[:site_search])
+      @bookmarks = Bookmark.where("site_id = ?", params[:site_search])
+      @sites = Site.where("id = ?", params[:site_search])
+      
     else
       #default search if no search params entered
       no = 5

@@ -22,7 +22,7 @@ module RowsHelper
      end
      
   def make_domain_search_row(site)
-      raw link_to site.domain, searches_path(:search => site.id), :title => "View all bookmarks under this domain"
+      raw link_to site.domain, searches_path(:site_search => site.id), :title => "View all bookmarks under this domain"
   end
         
   def create_sites_delete_button(site)
