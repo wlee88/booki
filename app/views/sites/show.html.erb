@@ -1,0 +1,32 @@
+<h1>Site show</h1>
+
+<p>
+  <b>Domain</b>
+  <%= link_to @site.domain %>
+</p>
+
+<% @site.bookmarks.each do |bookmark| %>
+	Name: <%= bookmark.name %>
+	tinyurl: <%= bookmark.tinyurl %>
+<% end %>
+<p>
+  <b>name</b>
+  <%= @bookmark.name %>
+</p>
+
+<p>
+  <b>url</b>
+  <%= @bookmark.url %>
+</p>
+
+<p>
+  <b>tinyurl</b>
+	<%= @bookmark.tinyurl %>
+</p>
+
+<p>
+  <b>tags</b>
+  <%= join_tags(@bookmark) %>
+</p>
+
+<%= link_to "Back to bookmarks", bookmarks_path%>

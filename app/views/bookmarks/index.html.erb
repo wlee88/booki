@@ -1,0 +1,35 @@
+<%= title("Bookmarks")%>
+
+<% if @bookmarks.empty?%>
+
+
+<%= header (":(")%>
+ <p id="no_objects_error">Sorry! No Bookmarks Found. The database is empty</p>
+
+
+<%= create_top_button("Create Bookmark") %>
+
+<% else %>
+
+
+<%= create_top_button("Create Bookmark") %>
+
+<%= header("Recently Created")%>
+
+<table>
+
+<% @bookmarks.each do |bookmark| %>
+
+<tr>
+  <td><%= create_bookmark_name_row(bookmark) %></td>
+  <td class="tinyurls"><%= create_bookmark_tinyurl_row(bookmark) %></td>
+  <td class="tags">tags: <%= join_tags(bookmark)%></td>
+  <td class="button"><%= link_to "delete", bookmark_path(bookmark), :method => :delete %></td>
+</tr>	
+<% end %>
+</table>
+
+<% end %>
+
+<%= will_paginate @bookmarks%>
+

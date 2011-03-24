@@ -1,0 +1,27 @@
+<div id ="content">
+
+<% @bookmark.tags.build %> 
+<%= form_for(@bookmark) do |bookmark| %>
+
+	<%= create_bookmarks_errors_box(bookmark) %>
+
+  <div class="field">
+    <%= bookmark.label :name, 'Description' %><br />
+    <%= bookmark.text_field :name %>
+  </div>
+  <div class="field">
+    <%= bookmark.label :url  %><br />
+    <%= bookmark.text_field :url %>
+  </div>
+
+  <%= render :partial => 'tags/form',
+             :locals => {:form => bookmark} %>
+
+  <div class="actions">
+    <%= bookmark.submit %>
+  </div>
+
+
+<% end %>
+
+</div>

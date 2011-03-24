@@ -1,0 +1,20 @@
+<% title("Sites")%>
+
+<div id="container">
+<p class="top_text">Bookmarked Domains</p>
+
+<% if @sites.empty? %>
+<p id="no_objects_error">Sorry! No Domains Found. Please Create a bookmark</p>
+<% end %>
+<table>
+
+	<% @sites.each do |site|%>
+		<tr>
+			<td class='domains'><%= make_domain_search_row(site)%></td>
+			<td class="button"><%= create_sites_delete_button(site) %></td>
+		</tr>
+	<% end %>
+	
+</table>
+</div>
+</div>

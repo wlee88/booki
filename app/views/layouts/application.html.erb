@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<p id="notice"><%= notice %></p>
+<html>
+<head>
+	
+  <title>Booki</title>
+  <%= stylesheet_link_tag "style_white" %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="navmenu">
+
+	<ul>
+		<li class="title"><%= yield :title %></li>
+		<li class="bookmarks"><%= link_to "Bookmarks", bookmarks_path %></li>
+		<li class="sites"><%= link_to "Sites", sites_path%><li>
+		<li class="search_box"><% form_tag searches_path, :method => 'get' do %> <%= search_field_tag :search %><%= submit_tag "Search"%>
+			<% end %></li>
+	</ul>
+</div>
+
+
+<%= yield :above_container %>
+
+<div id="container">
+<%= yield %>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+	
+<div class="search_result_box">
+	<p class="top_text">Domain matched</p>
+	<% if @sites.empty? %>
+	<tr><td>No Matches Found</td></tr>
+	<% end %>
+	<% @sites.each do |site| %>
+		<table>
+			<tr>
+			  <td class='domains'><%= raw make_domain_search_row(site)%></td>
+			<td class="button"><%= create_sites_delete_button(site)%></td>
+			</tr>
+		
+		</table>
+	<% end %>
+
+</div>
+
+<div class="search_result_box">
+	<p class="top_text">Bookmarks with Related Names</p>
+	<% if @bookmarks.empty? %>
+	<tr><td>No Matches Found</td></tr>
+	<% end %>
+	<% @bookmarks.each do |bookmark| %>
+		<table>
+			<tr>
+			  <td><%= create_bookmark_name_row(bookmark) %></td>
+			  <td class="tinyurls"><%= create_bookmark_tinyurl_row(bookmark) %> </td>
+			  <td class="tags">tags: <%= join_tags(bookmark)%></td>
+			  <td class="button"><%= create_searches_bookmark_delete_button(bookmark) %></td>
+			</tr>
+		
+		</table>
+	<% end %>
+</div>
+
+<div class="search_result_box">
+	<p class="top_text">Bookmarks with Related Tags</p>
+	<% if @tags.empty? %>
+	<tr><td>No Matches Found</td></tr>
+	<% end %>
+	<% @tags.each do |tag| %>
+	
+		<table>
+			<tr>
+			  <td><%= create_bookmark_name_row(tag.bookmark) %></td>
+			  <td class="tinyurls"><%= create_bookmark_tinyurl_row(tag.bookmark) %></td>
+			  <td class="tags">tags: <%= raw join_tags(tag.bookmark)%></td>
+			  <td><%= create_searches_bookmark_delete_button(tag.bookmark) %></td>
+			</tr>
+		
+		</table>
+	<% end %>
+</div>
