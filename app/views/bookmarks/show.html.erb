@@ -2,13 +2,10 @@
 
 <p>
   <b>Domain</b>
-  <%= link_to @site.domain %>
+  <%= link_to @bookmark.site.domain %>
 </p>
 
-<% @site.bookmarks.each do |bookmark| %>
-	Name: <%= bookmark.name %>
-	tinyurl: <%= bookmark.tinyurl %>
-<% end %>
+
 <p>
   <b>name</b>
   <%= @bookmark.name %>

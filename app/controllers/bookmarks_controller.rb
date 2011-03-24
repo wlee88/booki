@@ -23,7 +23,9 @@ class BookmarksController < ApplicationController
   
   def create
     @bookmark = Bookmark.new(params[:bookmark])
-    @bookmark.site_id = Site.find_or_create_by_domain(params[:bookmark][:url]).id#Check if domain exists in the Site model. Create New if not
+    #@bookmark.site_id = Site.find_or_create_by_domain(Tools.domainify(params[:bookmark][:url])).id#Check if domain exists in the Site model. Create New if not
+    @site = Site.find_or_create_by_domain(Tools.domainify(params[:bookmark][:url]))
+    @bookmark.site_id = @site.id
      respond_to do |format|
         if @bookmark.save
           format.html { redirect_to(bookmarks_path) }

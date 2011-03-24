@@ -1,6 +1,6 @@
 module RowsHelper
   def create_bookmark_name_row(bookmark)
-      link_to bookmark.name, bookmark, :title => get_attr_html(bookmark.meta_title.to_s,bookmark.meta_desc.to_s), :class => :titles 
+      link_to bookmark.name,edit_bookmark_path(bookmark), :title => get_attr_html(bookmark.meta_title.to_s,bookmark.meta_desc.to_s), :class => :titles 
    end
 
    def create_bookmark_tinyurl_row(bookmark)
